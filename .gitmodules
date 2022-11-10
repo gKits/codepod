@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://gKits: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@github.com/gKits/codepod-api
+[submodule "webui"]
+	path = webui
+	url = https://gKits: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@github.com/gKits/codepod-webui
