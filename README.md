@@ -1,2 +1,0 @@
-# codepod
-The Codepod Project
