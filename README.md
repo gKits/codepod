@@ -12,4 +12,4 @@ The Codepod project
 - PostgreSQl        (Database)
 - Keycloak          (Authentication)
 
-![InfrastructureCodepod]("docs/codepod.drawio.svg")
+![InfrastructureCodepod](https://github.com/gKits/codepod/docs/codepod.drawio.svg)
