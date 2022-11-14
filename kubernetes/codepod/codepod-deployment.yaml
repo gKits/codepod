@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: codepod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codepod
+  template:
+    metadata:
+      labels:
+        app: codepod
+    spec:
+      containers:
+        - name: codepod
+          image: linuxserver/code-server
+          imagePullPolicy: "IfNotPresent"
+
