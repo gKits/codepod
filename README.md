@@ -9,7 +9,8 @@ The Codepod project
 - Javascript React  (Frontend)
 - TailwindCSS
 - Kubernetes
-- PostgreSQl        (Database)
+- PostgreSQl        (Database user)
+- MongoDB           (Database cluster)
 - Keycloak          (Authentication)
 
 ![InfrastructureCodepod](https://raw.githubusercontent.com/gKits/codepod/dfde8cfce350a2b6189821a858b578831983f47c/docs/codepod.drawio.svg)
