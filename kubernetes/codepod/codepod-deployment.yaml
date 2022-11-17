@@ -1,19 +1,22 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: codepod
   name: codepod
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: codepod
+  replicas: 1
   template:
     metadata:
       labels:
         app: codepod
     spec:
       containers:
-        - name: codepod
-          image: linuxserver/code-server
-          imagePullPolicy: "IfNotPresent"
+      - name: codepod
+        image: lscr.io/linuxserver/code-server:latest
+        ports:
+        - containerPort: 8443
 

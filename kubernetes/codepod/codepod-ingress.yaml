@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codepod
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: codeserver.test
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: codepod
+            port:
+              number: 8080
