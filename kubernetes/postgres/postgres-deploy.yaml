@@ -1,30 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: postgres-keycloak
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: postgres
-  replicas: 1
+      app: postgres-keycloak
   template:
     metadata:
       labels:
-        app: postgres
+        app: postgres-keycloak
     spec:
       containers:
-        - name: postgres
-          image: postgres:12
-          imagePullPolicy: "IfNotPresent"
-          ports:
-            - containerPort: 5432
-          envFrom:
-            - configMapRef:
-                name: postgres-config
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+      - name: postgres-keycloak
+        image: postgres:10-alpine
+        ports:
+          - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: keycloak
+          - name: POSTGRES_DB
+            value: keycloak
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-keycloak-secret
+                key: POSTGRES_PASSWORD
+        volumeMounts:
+        - name: postgres-keycloak-volume
+          mountPath: /var/lib/pgsql/data
       volumes:
-        - name: postgredb
-          persistentVolumeClaim:
-            claimName: postgres-pv-claim
+      - name: postgres-keycloak-volume
+        persistentVolumeClaim:
+          claimName: postgres-keycloak-pvc
